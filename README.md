@@ -11,6 +11,7 @@ Install :
 4. cd TermFun
 5. chmod +x *
 6. ./installer.py
-7. python3 TermfunListener.py
-8. connect to your phone with nc (your phones ip) 31338
-9. Have Fun!
+7. python3 TermfunListener
+8. Go to your sdcard and install termux-api.apk or dodwnload it from the appstore
+9. connect to your phone with nc (your phones ip) 31338. You can get the ip with the command: ip addr or ifconfig  
+10. Have Fun! 
