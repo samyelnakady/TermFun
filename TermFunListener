@@ -4,4 +4,4 @@ import os
 from os import system as command
 
 os.chdir("/data/data/com.termux/files/usr/bin")
-command("ncat -lvk -e /data/data/com.termux/files/usr/bin/TermFun")
+command("ncat -lvk -e 'python3 /data/data/com.termux/files/usr/bin/TermFun'")
