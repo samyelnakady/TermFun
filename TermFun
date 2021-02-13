@@ -1,0 +1,346 @@
+#!/data/data/com.termux/files/usr/bin/python3
+
+import os
+from termcolor import colored
+import time
+import getpass
+
+
+def login():
+    Password = "2504"
+    u = getpass.getpass('Password:')
+
+    if u == Password:
+        menue()
+    else:
+        print(colored("Wrong Password :'(", "red"))
+
+
+def clear():
+    os.system('clear')
+
+
+def interpreter():
+
+    ans = input(colored('<Console>:','red'))
+
+    if ans == '1':
+        os.system('termux-battery-status')
+        time.sleep(5)
+        menue()
+
+    elif ans == '2':
+        l = input('Brightness Level (0 - 255):')
+        os.system(f'termux-brightness {l}')
+        menue()
+
+
+    elif ans == '3':
+        n = input('Number to Call :')
+        os.system(f'termux-telephony-call {n}')
+        menue()
+
+
+    elif ans == "4":
+        c = input('Camera ID:')
+        f = input('Filename :')
+        print(colored('Taking a Picture [+]', 'green'))
+        os.system(f'termux-camera-photo -c {c} {f}.jpeg')
+        menue()
+
+
+    elif ans == "5":
+        print(colored('Getting Clipboard','green'))
+        os.system('termux-clipboard-get')
+        time.sleep(4)
+        menue()
+
+
+    elif ans == "6":
+        text = input('Text to add :')
+        os.system(f'termux-clipboard-set {text}')
+        time.sleep(2)
+        menue()
+
+
+    elif ans == "7":
+        print(colored('Listing Contacts [+]'))
+        os.system('termux-contact-list')
+        end = input("Press 1 to go back to the menue !")
+        if end == "1":
+            menue()
+        else:
+            menue()
+
+
+    elif ans =="8":
+        url = input("Url :")
+        print("Loading Page!")
+        os.system(f'termux-open-url {url}')
+        menue()
+
+
+    elif ans == "9":
+        filename = input('File to show :')
+        os.system(f'termux-open --view {filename}')
+        menue()
+
+
+    elif ans == "10":
+        f = input("Filename :")
+        l = input("Time in sec :")
+        os.system(f'termux-microphone-record -f {f} -l {l}')
+        print(colored(f'[+] Saved at /sdcard/{f}.aac', 'green'))
+        time.sleep(2)
+        menue()
+
+
+    elif ans == "11":
+        d = input("Duration in ms :")
+        os.system(f"termux-vibrate -d {d} -f")
+        time.sleep(2)
+        menue()
+
+
+    elif ans == "12":
+        v = input("VolumeLevel :")
+        t = input("Type (alarm,music,notifiction,ring,system,call) :")
+        os.system(f'termux-volume {t} {v}')
+        time.sleep(2)
+        menue()
+
+
+    elif ans == "13":
+        options = ['[1] Wake Lock','[2] Wake Unlock']
+        for i in options:
+            print(i)
+        print()
+        opt = input("Choose:")
+        if opt == '1':
+            os.system("termux-wake-lock")
+            print("Process finished successfully!")
+        else:
+            os.system("termux-wake-unlock")
+            print("Process finished successfully!")
+        menue()
+
+
+    elif ans == "14":
+        options = ['[1] Wie dumm bist du ?',
+                   '[2] Wifi Password',
+                   '[3] You got hacked!',
+                   '[4] I know who you are']
+        for i in options:
+            print(i)
+        ans = input("Choose Prank:")
+
+        if ans == "1":
+            os.system("termux-dialog radio -t 'How dump are you ?' -v 'Very dump,Where is my brain,Im Smart!' ")
+            time.sleep(3)
+            menue()
+
+        elif ans == "2":
+            os.system("termux-dialog text -t 'Please enter the WifiPassword' -p | grep text ")
+            time.sleep(20)
+            menue()
+
+        elif ans == "3":
+            os.system("termux-dialog checkbox -t 'Warning! Virus was detected! What should be done?' -v 'Find Virus, Shutdown, Delete App'")
+            tine.sleep(3)
+            menue()
+
+        elif ans == "4":
+            n = input("Name:")
+            os.system(f"termux-dialog text -t 'Ich sehe dich {n}' ")
+            menue()
+
+
+    elif ans == '15':
+        options = ['[1] Turn on', '[2] Turn off ']
+
+        for i in options:
+            print(i)
+        opt = input('Choose :')
+
+        if opt == "1":
+            os.system('termux-torch on')
+        else:
+            os.system('termux-torch off')
+        menue()
+
+    elif ans == '16':
+        os.system('bash')
+        menue()
+
+    elif ans == "17":
+        u = input('Url :')
+        os.system(f'termux-wallpaper -u {u}')
+        menue()
+
+    elif ans == "18":
+        words = input('Say whay ?:')
+        os.system(f"termux-tts-speak '{words}'")
+        menue()
+
+    elif ans == "19":
+        print(colored('Media Player Module', 'white',"on_red"))
+        print()
+
+        options = ['[0] Info  [Get Current PLayback info      ]',
+                   '[1] Play  [Resumes the the Music if paused]',
+                   '[2] File  [Play a Song from Files         ]',
+                   '[3] Pause [Pause the Current Song         ]',
+                   '[4] Stop  [Quits The playback             ]'
+                   '',
+                   ]
+        for i in options:
+            print(i)
+        opt = input('Choose:>')
+
+        if opt == "0":
+            os.system("termux-media-player info")
+            time.sleep(3)
+
+        elif opt == "1":
+            os.system("termux-media-player play")
+            time.sleep(2)
+
+        elif opt == "2":
+            f = input('Filename :')
+            os.system(f"termux-media-player play {f}")
+            time.sleep(2)
+
+        elif opt == "3":
+            os.system("termux-media-player pause")
+            time.sleep(2)
+
+        elif opt == "4":
+            os.system("termux-media-player stop")
+            time.sleep(2)
+        menue()
+
+    elif ans == "20":
+        print(colored('Google Voice Troll Menue', 'white', "on_red"))
+        print()
+        options = ['[1] Send Messages',
+                   '[2] Turn off Bluetooth',
+                   '[3] Turn off Wifi',
+                   '[4] Make Apointment',
+                   '[5] Set an Alarm',
+                   '',
+                   ]
+
+        for i in options:
+            print(i)
+        opt = input('Choose:')
+
+        if opt == "1":
+            r = input('Name der Person:')
+            m = input('Message:')
+            os.system(f"termux-tts-speak 'ok google. sende eine Whatsappnachricht an {r}. {m}'")
+            time.sleep(2)
+            time.sleep(2)
+            time.sleep(3)
+            os.system("termux-tts-speak 'senden'")
+
+            menue()
+
+        elif opt == "2":
+            os.system("termux-tts-speak 'ok google. deaktiviere bluetooth'")
+            menue()
+
+        elif opt == "3":
+            os.system("termux-tts-speak 'ok google. deaktiviere Wlan'")
+            menue()
+
+        elif opt == "4":
+            os.system("termux-tts-speak 'ok google. erinnere mich morgen um 6:00 daran dass ich ein Vollidiot bin. '")
+            menue()
+
+        elif opt == "5":
+            os.system("termux-tts-speak 'ok google. stelle einen alarm in 5 minuten'")
+            menue()
+
+        if ans == "21":
+            print(colored('Siri Voice Troll Menue', 'white', "on_red"))
+            print()
+            options = ['[1] Send Messages',
+                       '[2] Turn off Bluetooth',
+                       '[3] Turn off Wifi',
+                        '[4] Make Apointment',
+                        '[5] Set an Alarm',
+                        '',
+                        ]
+
+            for i in options:
+                print(i)
+            opt = input('Choose:')
+
+        if opt == "1":
+            r = input('Name der Person:')
+            m = input('Message:')
+            os.system(f"termux-tts-speak 'siri. sende eine Whatsappnachricht an {r}. {m}'")
+            time.sleep(2)
+            time.sleep(2)
+            time.sleep(3)
+            os.system("termux-tts-speak 'senden'")
+
+            menue()
+
+        elif opt == "2":
+            os.system("termux-tts-speak 'hey siri. deaktiviere bluetooth'")
+            menue()
+
+        elif opt == "3":
+            os.system("termux-tts-speak 'hey siri. deaktiviere Wlan'")
+            menue()
+
+        elif opt == "4":
+            os.system("termux-tts-speak 'hey siri. erinnere mich morgen um 6:00 daran dass ich ein Vollidiot bin. '")
+            menue()
+
+        elif opt == "5":
+            os.system("termux-tts-speak 'hey siri. stelle einen alarm in 5 minuten'")
+            menue()
+
+
+
+def module_list():
+    modules = [
+               '[1] Battery Status',
+               '[2] Brightness Level',
+               '[3] Make a Call',
+               '[4] Take a Photo',
+               '[5] Clipboard-get',
+               '[6] Clipboard-set',
+               '[7] Contact-List',
+               '[8] Open Url',
+               '[9] Open apk',
+               '',
+               '[10] Record Mic',
+               '[11] Vibrate',
+               '[12] Volume',
+               '[13] Wake-lock/unlock',
+               '[14] Dialog Box Pranks',
+               '[15] Flashlight',
+               '[16] Terminal',
+               '[17] Change Wallpaper',
+               '[18] Speak',
+               '[19] Media PLayer',
+               '',
+               '[20] Google Trolls',
+               '[21] Siri Trolls',
+               '',
+               ]
+    for i in modules:
+        print(colored(i,'cyan'))
+    interpreter()
+
+def menue():
+    clear()
+    print()
+    print(colored('Welcome to TermFun! Lets have some fun!','white','on_red'))
+    print()
+    module_list()
+
+#login()

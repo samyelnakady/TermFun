@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+ncat -lvk -e /data/data/com.termux/files/usr/bin/TermFun
