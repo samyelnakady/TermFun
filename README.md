@@ -16,4 +16,9 @@ Install :
 7. python3 TermfunListener
 8. Go to your sdcard and install termux-api.apk or dodwnload it from the appstore
 9. connect to your phone with nc (your phones ip) 31338. You can get the ip with the command: ip addr or ifconfig  
-10. Have Fun! 
+10. Have Fun!
+
+This script can also be configured to be a permanent backdoor.
+
+Please never use this script on devices you dont own.
+This project was part of a presentation I did on IT-Security.
